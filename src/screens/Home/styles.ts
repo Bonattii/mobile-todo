@@ -27,6 +27,10 @@ export const styles = StyleSheet.create({
     marginRight: 4,
     fontSize: 18
   },
+  inputFocused: {
+    borderColor: '#5E60CE',
+    borderWidth: 1
+  },
   button: {
     width: 54,
     height: 54,
