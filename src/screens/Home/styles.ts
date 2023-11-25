@@ -1,9 +1,17 @@
 import { StyleSheet } from 'react-native'
 
 export const styles = StyleSheet.create({
-  container: {
+  mainContainer: { backgroundColor: '#1a1a1a', flex: 1 },
+  backgroundSquare: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    height: 178,
+    backgroundColor: '#0D0D0D'
+  },
+  contentContainer: {
     flex: 1,
-    backgroundColor: '#1a1a1a',
     padding: 24
   },
   logo: {

@@ -29,44 +29,48 @@ const Home = () => {
   } = useHomeController()
 
   return (
-    <View style={styles.container}>
-      <Image source={Logo} style={styles.logo} />
+    <View style={styles.mainContainer}>
+      <View style={styles.backgroundSquare} />
 
-      <View style={styles.form}>
-        <TextInput
-          style={[styles.input, isFocused && styles.inputFocused]}
-          placeholder="Add a new task"
-          placeholderTextColor="#808080"
-          value={newTask}
-          onChangeText={setNewTask}
-          onFocus={() => setIsFocused(true)}
-          onBlur={() => setIsFocused(false)}
-        />
+      <View style={styles.contentContainer}>
+        <Image source={Logo} style={styles.logo} />
 
-        <TouchableOpacity style={styles.button} onPress={handleAddTask}>
-          <Text style={styles.buttonText}>+</Text>
-        </TouchableOpacity>
-      </View>
-
-      <View style={styles.infoContainer}>
-        <Info title="Created" count={tasks.length} />
-        <Info title="Finished" count={doneTasksCount} isCreated={false} />
-      </View>
-
-      <FlatList
-        keyExtractor={(item) => item.id}
-        data={tasks.sort((a, b) => Number(a.isDone) - Number(b.isDone))}
-        showsVerticalScrollIndicator={false}
-        ListEmptyComponent={() => <EmptyList />}
-        renderItem={({ item }) => (
-          <Task
-            title={item.title}
-            isDone={item.isDone}
-            onRemove={() => handleRemoveTask(item.id)}
-            onFinished={() => handleFinishedTask(item.id)}
+        <View style={styles.form}>
+          <TextInput
+            style={[styles.input, isFocused && styles.inputFocused]}
+            placeholder="Add a new task"
+            placeholderTextColor="#808080"
+            value={newTask}
+            onChangeText={setNewTask}
+            onFocus={() => setIsFocused(true)}
+            onBlur={() => setIsFocused(false)}
           />
-        )}
-      />
+
+          <TouchableOpacity style={styles.button} onPress={handleAddTask}>
+            <Text style={styles.buttonText}>+</Text>
+          </TouchableOpacity>
+        </View>
+
+        <View style={styles.infoContainer}>
+          <Info title="Created" count={tasks.length} />
+          <Info title="Finished" count={doneTasksCount} isCreated={false} />
+        </View>
+
+        <FlatList
+          keyExtractor={(item) => item.id}
+          data={tasks.sort((a, b) => Number(a.isDone) - Number(b.isDone))}
+          showsVerticalScrollIndicator={false}
+          ListEmptyComponent={() => <EmptyList />}
+          renderItem={({ item }) => (
+            <Task
+              title={item.title}
+              isDone={item.isDone}
+              onRemove={() => handleRemoveTask(item.id)}
+              onFinished={() => handleFinishedTask(item.id)}
+            />
+          )}
+        />
+      </View>
     </View>
   )
 }
